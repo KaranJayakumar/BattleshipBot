@@ -30,12 +30,12 @@ board = [['.' for _ in range(10)] for _ in range(10)]
 
 # This is just a test to simulate some shots
 
-board[5][5] = 'M'
-board[5][6] = 'H'
-board[5][7] = 'H'
-ship_sizes = [2, 3, 3, 4, 5]  # Standard Battleship sizes
+# board[5][5] = 'M'
+# board[5][6] = 'H'
+# board[5][7] = 'H'
+# ship_sizes = [2, 3, 3, 4, 5]  # Standard Battleship sizes
 
-weights = calculate_weights(board, ship_sizes)
-x, y = choose_shot(weights)
-print(f"Bot should shoot at ({x}, {y}) based on the calculated weights.")
+# weights = calculate_weights(board, ship_sizes)
+# x, y = choose_shot(weights)
+# print(f"Bot should shoot at ({x}, {y}) based on the calculated weights.")
 
