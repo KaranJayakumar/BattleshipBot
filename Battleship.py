@@ -1,20 +1,19 @@
 import random
 def ShipLogic(round, yourMap, yourHp, enemyHp, p1ShotSeq, p1PrevHit, storage):
-    x = random.randint(1,10)
-    y = random.randint(1,10)
+    storage.append(p1PrevHit)
+    curEnemyBoard = updateBoard(p1ShotSeq, storage[1:]) 
+    return getShot(curEnemyBoard), storage
 
-    curEnemyBoard = updateBoard(p1ShotSeq, p1PrevHit) 
-    getShot(curEnemyBoard)
-    return [x,y], storage
-
-def updateBoard(p1ShotSeq, p1PrevHit):
+def updateBoard(p1ShotSeq, prevHits):
     board = [["." for _ in range(10)] for _ in range(10)]
     p1Missed = []
-    for coord in p1ShotSeq:
-        if coord not in p1PrevHit:
+    p1Hits = []
+    for i in range(len(p1ShotSeq)):
+        if(prevHits[i] == False):
             p1Missed.append(coord)
-
-    for coord in p1PrevHit:
+        else:
+            p1Hits.append(coord)
+    for coord in p1Hits:
         board[coord[0]][coord[1]] = "H"
 
     for coord in p1Missed:
