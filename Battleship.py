@@ -10,14 +10,15 @@ def updateBoard(p1ShotSeq, prevHits):
     p1Hits = []
     for i in range(len(p1ShotSeq)):
         if(prevHits[i] == False):
-            p1Missed.append(coord)
+            p1Missed.append(p1ShotSeq[i])
         else:
-            p1Hits.append(coord)
+            p1Hits.append(p1ShotSeq[i])
     for coord in p1Hits:
-        board[coord[0]][coord[1]] = "H"
+        board[coord[0] - 1][coord[1] - 1] = "H"
 
     for coord in p1Missed:
-        board[coord[0]][coord[1]] = "M"
+        print(f"x : {coord[0]} y : {coord[1]}")
+        board[coord[0] - 1][coord[1] - 1] = "M"
 
     return board 
 
@@ -55,7 +56,7 @@ def updateWeights(weights, board):
         for colNo in range(10):
             if(board[rowNo][colNo] == 'H'):
                 if(isLoneHit(rowNo, colNo, board)):
-                    updateLoneHit()
+                    updateLoneHit(weights, rowNo, colNo)
                 else: 
                     updateConnectedHits(weights, board, rowNo, colNo)
 
