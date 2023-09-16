@@ -47,7 +47,7 @@ def calculate_weights(board, ship_sizes):
 
 def choose_shot(weights):
     max_weight = max(max(row) for row in weights)
-    candidates = [(x, y) for x in range(10) for y in range(10) if weights[x][y] == max_weight]
+    candidates = [(z + 1, y + 1) for x in range(10) for y in range(10) if weights[x][y] == max_weight]
     return random.choice(candidates)
 
 def updateWeights(weights, board):
