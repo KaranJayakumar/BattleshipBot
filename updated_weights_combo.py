@@ -33,3 +33,19 @@ def count_ship_placements(board, i, j, ship_length):
             count += 1
 
     return count
+
+
+def updateBoard(p1ShotSeq, p1PrevHit):
+    board = [["." for _ in range(10)] for _ in range(10)]
+    p1Missed = []
+    for coord in p1ShotSeq:
+        if coord not in p1PrevHit:
+            p1Missed.append(coord)
+
+    for coord in p1PrevHit:
+        board[coord[0]][coord[1]] = "H"
+
+    for coord in p1Missed:
+        board[coord[0]][coord[1]] = "M"
+
+    return board 
